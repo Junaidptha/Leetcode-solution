@@ -25,15 +25,15 @@ class Solution {
             if (root.left == null) return root.right;
             if (root.right == null) return root.left;
 
-            TreeNode rightSubtree = root.right;
-            TreeNode minNode = findMin(root.right);
+            // TreeNode rightSubtree = root.right;
+            TreeNode minNode = helper(root.right);
             minNode.left = root.left;
-            return rightSubtree;
+            return root.right;
             
         }
         return root;
     }
-    private TreeNode findMin(TreeNode node) {
+    private TreeNode helper(TreeNode node) {
         while (node.left != null) {
             node = node.left;
         }
