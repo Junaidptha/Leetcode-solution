@@ -14,19 +14,23 @@
  * }
  */
 class Solution {
-    HashSet<Integer> set;
-    public boolean helper(TreeNode root, int k){
+    TreeNode global;
+    public boolean helper(TreeNode root, int target){
         if(root == null) return false;
 
-        if(set.contains(k - root.val)) return true;
-        set.add(root.val);
+        if(root.val == target) return true;
+        if(root.val < target) return helper(root.right, target);
+        else return helper(root.left, target);
+    }
+    public boolean find(TreeNode root, int k) {
+        if(root == null) return false;
+        if (k != ((root.val)*2)  && (helper(global,  k - root.val))) return true;
+        return find(root.left,  k) || find(root.right,  k );
 
-        boolean left = helper(root.left, k);
-        boolean right= helper(root.right, k);
-        return left|| right;
     }
     public boolean findTarget(TreeNode root, int k) {
-        set = new HashSet<>();
-        return helper(root, k);
+        global = root;
+        return find(root, k);
+
     }
 }
