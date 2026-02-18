@@ -14,7 +14,7 @@ public:
     bool inorder(TreeNode* root,unordered_set<int> &uset,int k){
         if (root == nullptr) return false;
 
-        if (uset.count(k - (root -> val))) return true;
+        if (uset.find(k - (root -> val)) != uset.end()) return true;
         uset.insert(root -> val);
 
         bool left = inorder(root -> left,uset,k);
