@@ -25,7 +25,6 @@ class Solution {
             for(int j = 0; j < m; j++){
                 if(grid[i][j] != 0){
                     maxGold = Math.max(maxGold, helper(grid, i, j));
-                    System.out.println(maxGold);
                 }
             }
         }
