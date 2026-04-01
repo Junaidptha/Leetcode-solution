@@ -1,6 +1,7 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+
         for(int i = 0; i < numCourses; i++){
             adj.add(new ArrayList<>());
         }
@@ -9,7 +10,7 @@ class Solution {
         for(int[] it : prerequisites){
             int u = it[0];
             int v = it[1];
-            adj.get(u).add(v); 
+            adj.get(u).add(v);
             indegree[v]++;
         }
         Queue<Integer> q = new LinkedList<>();
@@ -31,8 +32,6 @@ class Solution {
                 }
             }
         }
-
-        
         return count == numCourses;
     }
 }
